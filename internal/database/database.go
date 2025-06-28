@@ -16,11 +16,13 @@ type Service struct {
 }
 
 func New() *Service {
-	err := godotenv.Load("../.env")
+	// Load .env file from current directory
+	err := godotenv.Load(".env")
 	if err != nil {
 		log.Printf("Warning: Error loading .env file: %v", err)
 	}
 
+	// Read environment variables inside the function
 	dbURI := os.Getenv("MONGODB_URL")
 	dbName := os.Getenv("MONGODB_DATABASE")
 
